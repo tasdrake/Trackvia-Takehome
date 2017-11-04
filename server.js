@@ -16,6 +16,25 @@ app.use(function(req, res, next) {
 
 app.use(bodyParser.json());
 
+async function search(locations, key) {
+  return locations.map(city => {
+    // build first url with key and location data
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${key}`;
+
+    return fetch(url).then(res => res.json()).then(geoCode => {
+      // take values for lat and lng and build url with them
+      const lat = geoCode.results[0].geometry.location.lat;
+      const lng = geoCode.results[0].geometry.location.lng;
+      const url2 = `https://maps.googleapis.com/maps/api/elevation/json?locations=${lat},${lng}&key=${key}`;
+      return fetch(url2).then(response => response.json()).then(elev => {
+        const elevation = elev.results[0].elevation;
+        // elevations.push([city, elevation]);
+        return [city, elevation];
+      });
+    });
+  });
+}
+
 app.post('/geoCode', async (req, res, next) => {
   // const elevations = [];
   const key = process.env.KEY;
@@ -41,31 +60,35 @@ app.post('/geoCode', async (req, res, next) => {
   //   });
   // }
 
-    const elevations = locations.map(city => {
-      // build first url with key and location data
-      const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${key}`;
+    // const elevations = locations.map(city => {
+    //   // build first url with key and location data
+    //   const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${key}`;
+    //
+    //   return fetch(url).then(res => res.json()).then(geoCode => {
+    //     // take values for lat and lng and build url with them
+    //     const lat = geoCode.results[0].geometry.location.lat;
+    //     const lng = geoCode.results[0].geometry.location.lng;
+    //     const url2 = `https://maps.googleapis.com/maps/api/elevation/json?locations=${lat},${lng}&key=${key}`;
+    //     return fetch(url2).then(response => response.json()).then(elev => {
+    //       const elevation = elev.results[0].elevation;
+    //       // elevations.push([city, elevation]);
+    //       return [city, elevation];
+    //     });
+    //   });
+    // });
 
-      return fetch(url).then(res => res.json()).then(geoCode => {
-        // take values for lat and lng and build url with them
-        const lat = geoCode.results[0].geometry.location.lat;
-        const lng = geoCode.results[0].geometry.location.lng;
-        const url2 = `https://maps.googleapis.com/maps/api/elevation/json?locations=${lat},${lng}&key=${key}`;
-        return fetch(url2).then(response => response.json()).then(elev => {
-          const elevation = elev.results[0].elevation;
-          // elevations.push([city, elevation]);
-          return [city, elevation];
-        });
-      });
+    search(locations, key).then(e => {
+      console.log(e);
     });
-
 
 
     console.log(elevations);
     // res.send(JSON.stringify(elevations));
-    next(elevations)
+    // next(elevations)
 
-}).use((elevations) => {
-  console.log(elevations);
+// }).use((elevations) => {
+//   console.log(elevations);
+// });
 });
 
 app.use(express.static(__dirname + '/public'));
