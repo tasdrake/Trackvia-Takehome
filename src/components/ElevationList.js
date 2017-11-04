@@ -21,20 +21,27 @@ class ElevationList extends Component {
     }
 
     function merge(array1, array2) {
+      // new array that the other arrays will merge into
       const newArray = [];
+      // while loop to continue for an unknown length
       while (array1.length || array2.length) {
+        // if either array is empty push elements from the other array
         if (array1.length && !array2.length) {
          newArray.push(array1.shift());
        } else if (array2.length && !array1.length) {
          newArray.push(array2.shift());
-       } else if (array1[0][1] >= array2[0][1]) {
+       }
+       // Check to see which city has a larger elevation, then push that array
+       else if (array1[0][1] >= array2[0][1]) {
           newArray.push(array1.shift());
         } else if (array2[0][1] >= array1[0][1]) {
           newArray.push(array2.shift());
         }
       }
+      // return the sorted array, so that it can be merged with other arrays
       return newArray;
     }
+
     return elevations;
   }
 
