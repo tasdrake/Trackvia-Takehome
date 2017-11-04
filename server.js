@@ -80,9 +80,9 @@ app.post('/geoCode', (req, res, next) => {
           });
         });
 
-        setTimeout(function(){
+        // setTimeout(function(){
           resolve(elevations);
-        }, 1000);
+        // }, 1000);
       });
     }
 
