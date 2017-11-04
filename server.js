@@ -61,11 +61,11 @@ app.post('/geoCode', (req, res, next) => {
 
      function search() {
       return new Promise((resolve, reject) => {
-        resolve(locations.map(city => {
+        const elevations = locations.map(city => {
           // build first url with key and location data
           const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${key}`;
 
-          return fetch(url).then(res => res.json()).then(geoCode => {
+          fetch(url).then(res => res.json()).then(geoCode => {
             // take values for latitude and longitude and build url with them
             const lat = geoCode.results[0].geometry.location.lat;
             const lng = geoCode.results[0].geometry.location.lng;
@@ -78,7 +78,8 @@ app.post('/geoCode', (req, res, next) => {
               return [city, elevation];
             });
           });
-        }));
+        });
+        resolve(elevations)
         // setTimeout(function(){
         //   resolve('ele');
         // }, 250);
