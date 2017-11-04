@@ -1,33 +1,39 @@
 import React, { Component } from 'react';
 import '../index.css';
+const geoKey = 'AIzaSyAnY-2g8Lvk8QxLUA9ZzmJPQQCZ40BrQLE';
+const elevationKey = 'AIzaSyBs_fxmu5CtvqhO9FKuXXQucXL0urSDq7c';
 
 class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      newCity: '',
-      cities: []
+      newLocation: '',
+      locations: []
     };
   }
 
-  addNewCity = (e) => {
-    this.setState({ newCity: e.target.value });
+  addNewLocation = (e) => {
+    this.setState({ newLocation: e.target.value });
   }
 
-  addCity = (e) => {
+  addLocation = (e) => {
     e.preventDefault();
-    const cities = this.state.cities;
-    cities.push(this.state.newCity);
-    this.setState({ newCity: '', cities });
+    const locations = this.state.locations;
+    locations.push(this.state.newLocation);
+    this.setState({ newLocation: '', locations });
   }
 
   search = (e) => {
     e.preventDefault();
-    this.state.cities.map(city => {
-      city.replace(' ', '+');
-      const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${key}`
+    this.state.locations.map(city => {
+      const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${geoKey}`;
 
-      fetch(url);
+      fetch(url).then(res => res.json()).then(geoCode => {
+        console.log(geoCode.results[0].geometry.location);
+        const lat = geoCode.results[0].geometry.location.lat;
+        const lng = geoCode.results[0].geometry.location.lng;
+        console.log(lat, lng);
+      });
 
 
     });
@@ -39,28 +45,28 @@ class Search extends Component {
       <form className="form-horizontal well">
         <div className="form-group">
           <div className="col-sm-8 col-sm-offset-2">
-            <h4>Add Cities to Elevation Search</h4>
+            <h4>Add Locations to Elevation Search</h4>
           </div>
         </div>
         <div className="form-group">
-          <label className="col-sm-2 control-label">New City</label>
+          <label className="col-sm-2 control-label">New Location</label>
           <div className="col-sm-12">
             <div className="row">
               <div className="col-sm-4">
-                <input type="text" className="form-control" id="newCity" name="newCity" onChange={this.addNewCity} value={this.state.newCity}/>
+                <input type="text" className="form-control" onChange={this.addNewLocation} value={this.state.newLocation}/>
               </div>
               <div className="col-sm-2">
-                <button className="btn btn-primary" onClick={this.addCity}>Add City</button>
+                <button className="btn btn-primary" onClick={this.addLocation}>Add Location</button>
               </div>
             </div>
           </div>
         </div>
         <div className="form-group">
-          <label className="col-sm-2 control-label">Added Cities</label>
+          <label className="col-sm-2 control-label">Added Locations</label>
           <div className="col-sm-4">
             <ul>
               {
-                this.state.cities.map((e, i) => <li key={i}>{e}</li>)
+                this.state.locations.map((e, i) => <li key={i}>{e}</li>)
               }
             </ul>
           </div>
