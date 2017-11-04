@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 
 
 app.post('/geoCode', (req, res, next) => {
-  const elevations = [];
+  // const elevations = [];
   const key = process.env.KEY;
   const locations = req.body.locations;
 
@@ -61,7 +61,7 @@ app.post('/geoCode', (req, res, next) => {
 
      function search() {
       return new Promise((resolve, reject) => {
-        locations.map(city => {
+        resolve(locations.map(city => {
           // build first url with key and location data
           const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${key}`;
 
@@ -76,14 +76,14 @@ app.post('/geoCode', (req, res, next) => {
               console.log(elevations);
             });
           });
-        });
-        setTimeout(function(){
-          resolve('ele');
-        }, 250);
+        }));
+        // setTimeout(function(){
+        //   resolve('ele');
+        // }, 250);
       });
     }
 
-    search().then(() => {
+    search().then((elevations) => {
       console.log(elevations);
     });
     // console.log(elevations);
