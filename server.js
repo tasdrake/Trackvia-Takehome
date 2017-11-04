@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 
 
 app.post('/geoCode', (req, res, next) => {
-  // const elevations = [];
+  const elevations = [];
   const key = process.env.KEY;
   const locations = req.body.locations;
 
