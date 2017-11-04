@@ -80,11 +80,10 @@ app.post('/geoCode', (req, res, next) => {
       });
     }
 
-    search().then((res) => {
-      console.log('finally', res);
-
+    search().then((ele) => {
+      console.log('finally', ele);
     })
-    console.log(elevations);
+    // console.log(elevations);
     // res.send(JSON.stringify(elevations));
 });
 
