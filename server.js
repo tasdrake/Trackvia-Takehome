@@ -87,9 +87,9 @@ app.post('/geoCode', (req, res, next) => {
       });
     }
 
-    search().then((ele) => {
-      console.log(ele);
-    });
+    // search().then((ele) => {
+    //   console.log(ele);
+    // });
 
     const ele = search();
     console.log(ele);
