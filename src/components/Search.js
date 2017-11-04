@@ -47,8 +47,7 @@ class Search extends Component {
     // take the stream from fetch and parse it
     .then(res => res.json())
     // set the state to contain the elevations
-    .then(elevations => console.log(3, elevations))
-    // .then(elevations => this.setState({ elevations }));
+    .then(elevations => this.setState({ elevations }));
   }
 
 
