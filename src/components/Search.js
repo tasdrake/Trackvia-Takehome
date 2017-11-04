@@ -32,25 +32,43 @@ class Search extends Component {
     // if (this.state.elevations.length) {
     //   this.setState({ elevations: [] });
     // }
-    const elevations = this.state.locations.map(city => {
-      const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${key}`;
 
-      return fetch(url).then(res => res.json()).then(geoCode => {
-        const lat = geoCode.results[0].geometry.location.lat;
-        const lng = geoCode.results[0].geometry.location.lng;
-        const url2 = `https://maps.googleapis.com/maps/api/elevation/json?locations=${lat},${lng}&key=${key}`;
+    // this.state.locations.map(city => {
 
-        return fetch(url2).then(response => response.json()).then(elev => {
-          // const elevations = this.state.elevations;
-          const elevation = elev.results[0].elevation;
-          return [city, elevation];
-          // elevations.push([city, elevation]);
-          // this.setState({ elevations });
-        });
-      });
-    });
+      // const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${key}`;
 
-    this.setState({ elevations });
+
+      // fetch(url).then(res => res.json()).then(geoCode => {
+      //   const lat = geoCode.results[0].geometry.location.lat;
+      //   const lng = geoCode.results[0].geometry.location.lng;
+      //   const url2 = `https://maps.googleapis.com/maps/api/elevation/json?locations=${lat},${lng}&key=${key}`;
+
+
+        // fetch(url2, {
+        //   method: 'GET',
+        //   headers: {
+        //     'Content-Type': 'application/json',
+        //     'Accept': 'application/json',
+        //     }
+        // }).then(response => response.json()).then(elev => {
+        //   const elevations = this.state.elevations;
+        //   const elevation = elev.results[0].elevation;
+        //   elevations.push([city, elevation]);
+        //   this.setState({ elevations });
+        // });
+      // });
+
+
+    // });
+
+    // fetch('https://localhost:3000/geoCode', {
+    fetch('https://tasman-trackvia-takehome.herokuapp.com/geoCode', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(this.state.locations)
+    }).then(res => res.json()).then(r => console.log(r))
   }
 
 

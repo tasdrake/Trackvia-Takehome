@@ -22624,29 +22624,46 @@ var Search = function (_Component) {
       // if (this.state.elevations.length) {
       //   this.setState({ elevations: [] });
       // }
-      var elevations = _this.state.locations.map(function (city) {
-        var url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + city + '&key=' + key;
 
-        return fetch(url).then(function (res) {
-          return res.json();
-        }).then(function (geoCode) {
-          var lat = geoCode.results[0].geometry.location.lat;
-          var lng = geoCode.results[0].geometry.location.lng;
-          var url2 = 'https://maps.googleapis.com/maps/api/elevation/json?locations=' + lat + ',' + lng + '&key=' + key;
+      // this.state.locations.map(city => {
 
-          return fetch(url2).then(function (response) {
-            return response.json();
-          }).then(function (elev) {
-            // const elevations = this.state.elevations;
-            var elevation = elev.results[0].elevation;
-            return [city, elevation];
-            // elevations.push([city, elevation]);
-            // this.setState({ elevations });
-          });
-        });
+      // const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${key}`;
+
+
+      // fetch(url).then(res => res.json()).then(geoCode => {
+      //   const lat = geoCode.results[0].geometry.location.lat;
+      //   const lng = geoCode.results[0].geometry.location.lng;
+      //   const url2 = `https://maps.googleapis.com/maps/api/elevation/json?locations=${lat},${lng}&key=${key}`;
+
+
+      // fetch(url2, {
+      //   method: 'GET',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //     'Accept': 'application/json',
+      //     }
+      // }).then(response => response.json()).then(elev => {
+      //   const elevations = this.state.elevations;
+      //   const elevation = elev.results[0].elevation;
+      //   elevations.push([city, elevation]);
+      //   this.setState({ elevations });
+      // });
+      // });
+
+
+      // });
+
+      fetch('https://localhost:3000/geoCode', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(_this.state.locations)
+      }).then(function (res) {
+        return res.json();
+      }).then(function (r) {
+        return console.log(r);
       });
-
-      _this.setState({ elevations: elevations });
     };
 
     _this.state = {
