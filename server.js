@@ -65,7 +65,7 @@ app.post('/geoCode', (req, res, next) => {
           // build first url with key and location data
           const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${key}`;
 
-          fetch(url).then(res => res.json()).then(geoCode => {
+          return fetch(url).then(res => res.json()).then(geoCode => {
             // take values for latitude and longitude and build url with them
             const lat = geoCode.results[0].geometry.location.lat;
             const lng = geoCode.results[0].geometry.location.lng;
