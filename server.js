@@ -78,7 +78,7 @@ app.post('/geoCode', (req, res, next) => {
           });
         });
         setTimeout(function(){
-          resolve("Success!");
+          resolve(elevations);
         }, 250);
       });
     }
