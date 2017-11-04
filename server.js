@@ -20,7 +20,7 @@ app.post('/geoCode', (req, res) => {
   const key = process.env.KEY;
   const locations = req.body.locations;
 
-  async function search() {
+  const search = async () => {
     return locations.map(city => {
       const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${key}`;
 

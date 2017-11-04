@@ -65,15 +65,21 @@ class Search extends Component {
             <label className="col-sm-12 control-label">New Location</label>
             <div className="col-sm-12">
               <div className="row">
+
+                {/* add location input */}
                 <div className="col-sm-9">
                   <input type="text" className="form-control" onChange={this.addNewLocation} value={this.state.newLocation}/>
                 </div>
+
+                {/* add location button */}
                 <div className="col-sm-3">
                   <button className="btn btn-primary" onClick={this.addLocation}>Add Location</button>
                 </div>
               </div>
             </div>
           </div>
+
+          {/* shows all current locations */}
           <div className="form-group">
             <label className="col-sm-12 control-label">Added Locations</label>
             <div className="col-sm-12">
@@ -84,6 +90,8 @@ class Search extends Component {
               </ul>
             </div>
           </div>
+
+          {/* button to search for elevations */}
           <div className="form-group">
             <div className="col-sm-8">
               <input type="submit" value="Search Elevations" className="btn btn-primary" onClick={this.search}/>
