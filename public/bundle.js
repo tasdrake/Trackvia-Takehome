@@ -22662,8 +22662,8 @@ var Search = function (_Component) {
         return res.json();
       })
       // set the state to contain the elevations
-      .then(function (r) {
-        return console.log(3, r);
+      .then(function (elevations) {
+        return _this.setState({ elevations: elevations });
       });
     };
 
@@ -22764,13 +22764,13 @@ var Search = function (_Component) {
                   'div',
                   { className: 'col-sm-9', __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 68
+                      lineNumber: 70
                     },
                     __self: this
                   },
                   __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', className: 'form-control', onChange: this.addNewLocation, value: this.state.newLocation, __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 69
+                      lineNumber: 71
                     },
                     __self: this
                   })
@@ -22779,7 +22779,7 @@ var Search = function (_Component) {
                   'div',
                   { className: 'col-sm-3', __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 71
+                      lineNumber: 75
                     },
                     __self: this
                   },
@@ -22787,7 +22787,7 @@ var Search = function (_Component) {
                     'button',
                     { className: 'btn btn-primary', onClick: this.addLocation, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 72
+                        lineNumber: 76
                       },
                       __self: this
                     },
@@ -22801,7 +22801,7 @@ var Search = function (_Component) {
             'div',
             { className: 'form-group', __source: {
                 fileName: _jsxFileName,
-                lineNumber: 77
+                lineNumber: 83
               },
               __self: this
             },
@@ -22809,7 +22809,7 @@ var Search = function (_Component) {
               'label',
               { className: 'col-sm-12 control-label', __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 78
+                  lineNumber: 84
                 },
                 __self: this
               },
@@ -22819,7 +22819,7 @@ var Search = function (_Component) {
               'div',
               { className: 'col-sm-12', __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 79
+                  lineNumber: 85
                 },
                 __self: this
               },
@@ -22828,7 +22828,7 @@ var Search = function (_Component) {
                 {
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 80
+                    lineNumber: 86
                   },
                   __self: this
                 },
@@ -22837,7 +22837,7 @@ var Search = function (_Component) {
                     'li',
                     { key: i, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 82
+                        lineNumber: 88
                       },
                       __self: _this2
                     },
@@ -22851,7 +22851,7 @@ var Search = function (_Component) {
             'div',
             { className: 'form-group', __source: {
                 fileName: _jsxFileName,
-                lineNumber: 87
+                lineNumber: 95
               },
               __self: this
             },
@@ -22859,13 +22859,13 @@ var Search = function (_Component) {
               'div',
               { className: 'col-sm-8', __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 88
+                  lineNumber: 96
                 },
                 __self: this
               },
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'submit', value: 'Search Elevations', className: 'btn btn-primary', onClick: this.search, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 89
+                  lineNumber: 97
                 },
                 __self: this
               })
@@ -22874,7 +22874,7 @@ var Search = function (_Component) {
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__ElevationList__["a" /* default */], { elevations: this.state.elevations, __source: {
             fileName: _jsxFileName,
-            lineNumber: 93
+            lineNumber: 102
           },
           __self: this
         })
@@ -22924,6 +22924,7 @@ var ElevationList = function (_Component) {
     }
 
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ElevationList.__proto__ || Object.getPrototypeOf(ElevationList)).call.apply(_ref, [this].concat(args))), _this), _this.elevationSort = function () {
+      // set elevations equal to the result of the sorted array
       var elevations = mergeSort(_this.props.elevations);
 
       // I use a merge sort to reduce the BigO to nlogn
@@ -22977,16 +22978,18 @@ var ElevationList = function (_Component) {
         'div',
         { className: 'col-sm-12', __source: {
             fileName: _jsxFileName,
-            lineNumber: 51
+            lineNumber: 52
           },
           __self: this
         },
+
+        // first sort the array of elevations, then map over it and display it
         this.elevationSort().map(function (e, i) {
           return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
             { key: i, className: 'list', __source: {
                 fileName: _jsxFileName,
-                lineNumber: 55
+                lineNumber: 57
               },
               __self: _this2
             },
@@ -22995,7 +22998,7 @@ var ElevationList = function (_Component) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 56
+                  lineNumber: 58
                 },
                 __self: _this2
               },
@@ -23006,7 +23009,7 @@ var ElevationList = function (_Component) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 56
+                  lineNumber: 58
                 },
                 __self: _this2
               },
