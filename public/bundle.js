@@ -22660,10 +22660,6 @@ var Search = function (_Component) {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(_this.state.locations)
-      }).then(function (res) {
-        return res.json();
-      }).then(function (r) {
-        return console.log(r);
       });
     };
 

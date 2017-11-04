@@ -13,10 +13,26 @@ app.use(function(req, res, next) {
 
 app.use(bodyParser.json())
 app.post('/geoCode', (req, res) => {
-  // const lat = req.body.lat;
-  // const lng = req.body.lng;
-  console.log(req.body);
-  res.send('success');
+  const elevations = [];
+  const key = process.env.KEY
+
+  this.state.locations.map(city => {
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${key}`;
+
+    fetch(url).then(res => res.json()).then(geoCode => {
+      const lat = geoCode.results[0].geometry.location.lat;
+      const lng = geoCode.results[0].geometry.location.lng;
+      const url2 = `https://maps.googleapis.com/maps/api/elevation/json?locations=${lat},${lng}&key=${key}`;
+
+
+      fetch(url2).then(response => response.json()).then(elev => {
+        const elevations = this.state.elevations;
+        const elevation = elev.results[0].elevation;
+        elevations.push([city, elevation]);
+      });
+    });
+  console.log(elevations);
+  res.send(elevations);
 });
 app.use(express.static(__dirname + '/public'));
 

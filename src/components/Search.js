@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ElevationList from './ElevationList';
 import '../index.css';
-const key = 'AIzaSyCR170bZ7FgpB7JdxPwS2hzAUSmyfEhS64';
+
 
 class Search extends Component {
   constructor(props) {
@@ -68,7 +68,7 @@ class Search extends Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(this.state.locations)
-    }).then(res => res.json()).then(r => console.log(r))
+    })
   }
 
 
