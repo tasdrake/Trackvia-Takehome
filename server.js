@@ -83,8 +83,8 @@ app.post('/geoCode', (req, res, next) => {
       });
     }
 
-    search().then(res => {
-      console.log(res);
+    search().then(() => {
+      console.log(elevations);
     });
     // console.log(elevations);
     // res.send(JSON.stringify(elevations));
