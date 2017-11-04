@@ -27,17 +27,14 @@ app.post('/geoCode', (req, res) => {
       const lat = geoCode.results[0].geometry.location.lat;
       const lng = geoCode.results[0].geometry.location.lng;
       const url2 = `https://maps.googleapis.com/maps/api/elevation/json?locations=${lat},${lng}&key=${key}`;
-
-
       fetch(url2).then(response => response.json()).then(elev => {
-        const elevations = this.state.elevations;
         const elevation = elev.results[0].elevation;
         elevations.push([city, elevation]);
       });
     });
   });
   console.log(elevations);
-  res.send(elevations);
+  res.send(json.stringify(elevations));
 });
 app.use(express.static(__dirname + '/public'));
 
