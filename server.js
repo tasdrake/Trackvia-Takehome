@@ -73,12 +73,12 @@ app.post('/geoCode', (req, res, next) => {
             fetch(url2).then(response => response.json()).then(elev => {
               const elevation = elev.results[0].elevation;
               elevations.push([city, elevation]);
-              // return [city, elevation];
+              console.log(elevations);
             });
           });
         });
         setTimeout(function(){
-          resolve(elevations);
+          resolve('ele');
         }, 250);
       });
     }
