@@ -12,6 +12,7 @@ app.use('/elevation', (req, res, next) => {
   const lat = req.body.lat;
   const lng = req.body.lng;
   console.log(lat, lng);
+  res.send('success');
 });
 
 const port = process.env.PORT || 3000;
