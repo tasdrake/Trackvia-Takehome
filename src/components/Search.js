@@ -17,17 +17,24 @@ class Search extends Component {
   }
 
   addNewLocation = (e) => {
+    // set the state every time the user inputs a key
     this.setState({ newLocation: e.target.value });
   }
 
   addLocation = (e) => {
+    // prevent the page from refreshing
     e.preventDefault();
+    // get locations from state
     const locations = this.state.locations;
+    // add to locations array
     locations.push(this.state.newLocation);
+    // set new state
     this.setState({ newLocation: '', locations });
   }
 
   search = (e) => {
+    // prevent the page from refreshing
+
     e.preventDefault();
     // send request to server.js to hide api keys
     fetch('https://tasman-trackvia-takehome.herokuapp.com/geoCode', {
