@@ -3,6 +3,7 @@ import '../App.css';
 
 class ElevationList extends Component {
   elevationSort = () => {
+    // set elevations equal to the result of the sorted array
     const elevations = mergeSort(this.props.elevations);
 
     // I use a merge sort to reduce the BigO to nlogn
@@ -50,6 +51,7 @@ class ElevationList extends Component {
     return (
       <div className="col-sm-12">
         {
+          // first sort the array of elevations, then map over it and display it
           this.elevationSort().map((e, i) => {
             return (
               <div key={i} className="list">

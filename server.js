@@ -4,6 +4,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const fetch = require('node-fetch');
+const async = require('async');
 
 require('dotenv').config();
 
