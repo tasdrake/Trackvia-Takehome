@@ -1,0 +1,18 @@
+{
+  "name": "Trackvia-Takehome",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/tasmandrake/Trackvia-Takehome.git",
+  "author": "Tasman Terzakes Drake <tasman.drake@colorado.edu>",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-scripts": "^1.0.17"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-react": "^6.24.1"
+  }
+}
