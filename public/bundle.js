@@ -10097,11 +10097,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(102);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__App__ = __webpack_require__(188);
+var _jsxFileName = '/Users/tasman/Documents/Galvanize/Career Services/interviews/Trackvia-Takehome/src/index.js';
 
 
 
 
-__WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__App__["a" /* default */], null), document.getElementById('root'));
+__WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__App__["a" /* default */], {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 5
+  },
+  __self: this
+}), document.getElementById('root'));
 
 /***/ }),
 /* 87 */
@@ -22433,6 +22440,8 @@ module.exports = ReactDOMInvalidARIAHook;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App_css__ = __webpack_require__(82);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__App_css__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Search__ = __webpack_require__(191);
+var _jsxFileName = '/Users/tasman/Documents/Galvanize/Career Services/interviews/Trackvia-Takehome/src/App.js';
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22459,8 +22468,19 @@ var App = function (_Component) {
     value: function render() {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
-        { className: 'search' },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_Search__["a" /* default */], null)
+        { className: 'search', __source: {
+            fileName: _jsxFileName,
+            lineNumber: 8
+          },
+          __self: this
+        },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_Search__["a" /* default */], {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 9
+          },
+          __self: this
+        })
       );
     }
   }]);
@@ -22587,6 +22607,8 @@ module.exports = function (css) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ElevationList__ = __webpack_require__(192);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__index_css__ = __webpack_require__(193);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__index_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__index_css__);
+var _jsxFileName = '/Users/tasman/Documents/Galvanize/Career Services/interviews/Trackvia-Takehome/src/components/Search.js';
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22608,62 +22630,39 @@ var Search = function (_Component) {
     var _this = _possibleConstructorReturn(this, (Search.__proto__ || Object.getPrototypeOf(Search)).call(this, props));
 
     _this.addNewLocation = function (e) {
+      // set the state every time the user inputs a key
       _this.setState({ newLocation: e.target.value });
     };
 
     _this.addLocation = function (e) {
+      // prevent the page from refreshing
       e.preventDefault();
+      // get locations from state
       var locations = _this.state.locations;
+      // add to locations array
       locations.push(_this.state.newLocation);
+      // set new state
       _this.setState({ newLocation: '', locations: locations });
     };
 
     _this.search = function (e) {
+      // prevent the page from refreshing
+
       e.preventDefault();
-      // if (this.state.elevations.length) {
-      //   this.setState({ elevations: [] });
-      // }
-
-      // this.state.locations.map(city => {
-
-      // const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${key}`;
-
-
-      // fetch(url).then(res => res.json()).then(geoCode => {
-      //   const lat = geoCode.results[0].geometry.location.lat;
-      //   const lng = geoCode.results[0].geometry.location.lng;
-      //   const url2 = `https://maps.googleapis.com/maps/api/elevation/json?locations=${lat},${lng}&key=${key}`;
-
-
-      // fetch(url2, {
-      //   method: 'GET',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //     'Accept': 'application/json',
-      //     }
-      // }).then(response => response.json()).then(elev => {
-      //   const elevations = this.state.elevations;
-      //   const elevation = elev.results[0].elevation;
-      //   elevations.push([city, elevation]);
-      //   this.setState({ elevations });
-      // });
-      // });
-
-
-      // });
-
-      // fetch('https://localhost:3000/geoCode', {
+      // send request to server.js to hide api keys
       fetch('https://tasman-trackvia-takehome.herokuapp.com/geoCode', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({ locations: _this.state.locations })
-      }).then(function (res) {
-        console.log(1, res);
-        res.json();
-        console.log(2, res);
-      }).then(function (r) {
+      })
+      // take the stream from fetch and parse it
+      .then(function (res) {
+        return res.json();
+      })
+      // set the state to contain the elevations
+      .then(function (r) {
         return console.log(3, r);
       });
     };
@@ -22679,50 +22678,119 @@ var Search = function (_Component) {
   _createClass(Search, [{
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
-        null,
+        {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 57
+          },
+          __self: this
+        },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'form',
-          { className: 'form-horizontal well' },
+          { className: 'form-horizontal well', __source: {
+              fileName: _jsxFileName,
+              lineNumber: 58
+            },
+            __self: this
+          },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
-            { className: 'form-group' },
+            { className: 'form-group', __source: {
+                fileName: _jsxFileName,
+                lineNumber: 59
+              },
+              __self: this
+            },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'div',
-              { className: 'col-sm-12' },
+              { className: 'col-sm-12', __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 60
+                },
+                __self: this
+              },
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'h4',
-                null,
+                {
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 61
+                  },
+                  __self: this
+                },
                 'Add Locations to Elevation Search'
               )
             )
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
-            { className: 'form-group' },
+            { className: 'form-group', __source: {
+                fileName: _jsxFileName,
+                lineNumber: 64
+              },
+              __self: this
+            },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'label',
-              { className: 'col-sm-12 control-label' },
+              { className: 'col-sm-12 control-label', __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 65
+                },
+                __self: this
+              },
               'New Location'
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'div',
-              { className: 'col-sm-12' },
+              { className: 'col-sm-12', __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 66
+                },
+                __self: this
+              },
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
-                { className: 'row' },
+                { className: 'row', __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 67
+                  },
+                  __self: this
+                },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                   'div',
-                  { className: 'col-sm-9' },
-                  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', className: 'form-control', onChange: this.addNewLocation, value: this.state.newLocation })
+                  { className: 'col-sm-9', __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 68
+                    },
+                    __self: this
+                  },
+                  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', className: 'form-control', onChange: this.addNewLocation, value: this.state.newLocation, __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 69
+                    },
+                    __self: this
+                  })
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                   'div',
-                  { className: 'col-sm-3' },
+                  { className: 'col-sm-3', __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 71
+                    },
+                    __self: this
+                  },
                   __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'button',
-                    { className: 'btn btn-primary', onClick: this.addLocation },
+                    { className: 'btn btn-primary', onClick: this.addLocation, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 72
+                      },
+                      __self: this
+                    },
                     'Add Location'
                   )
                 )
@@ -22731,22 +22799,48 @@ var Search = function (_Component) {
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
-            { className: 'form-group' },
+            { className: 'form-group', __source: {
+                fileName: _jsxFileName,
+                lineNumber: 77
+              },
+              __self: this
+            },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'label',
-              { className: 'col-sm-12 control-label' },
+              { className: 'col-sm-12 control-label', __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 78
+                },
+                __self: this
+              },
               'Added Locations'
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'div',
-              { className: 'col-sm-12' },
+              { className: 'col-sm-12', __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 79
+                },
+                __self: this
+              },
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'ul',
-                null,
+                {
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 80
+                  },
+                  __self: this
+                },
                 this.state.locations.map(function (e, i) {
                   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'li',
-                    { key: i },
+                    { key: i, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 82
+                      },
+                      __self: _this2
+                    },
                     e
                   );
                 })
@@ -22755,15 +22849,35 @@ var Search = function (_Component) {
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
-            { className: 'form-group' },
+            { className: 'form-group', __source: {
+                fileName: _jsxFileName,
+                lineNumber: 87
+              },
+              __self: this
+            },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'div',
-              { className: 'col-sm-8' },
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'submit', value: 'Search Elevations', className: 'btn btn-primary', onClick: this.search })
+              { className: 'col-sm-8', __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 88
+                },
+                __self: this
+              },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'submit', value: 'Search Elevations', className: 'btn btn-primary', onClick: this.search, __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 89
+                },
+                __self: this
+              })
             )
           )
         ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__ElevationList__["a" /* default */], { elevations: this.state.elevations })
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__ElevationList__["a" /* default */], { elevations: this.state.elevations, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 93
+          },
+          __self: this
+        })
       );
     }
   }]);
@@ -22782,6 +22896,8 @@ var Search = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App_css__ = __webpack_require__(82);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__App_css__);
+var _jsxFileName = '/Users/tasman/Documents/Galvanize/Career Services/interviews/Trackvia-Takehome/src/components/ElevationList.js';
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22826,20 +22942,28 @@ var ElevationList = function (_Component) {
       }
 
       function merge(array1, array2) {
+        // new array that the other arrays will merge into
         var newArray = [];
+        // while loop to continue for an unknown length
         while (array1.length || array2.length) {
+          // if either array is empty push elements from the other array
           if (array1.length && !array2.length) {
             newArray.push(array1.shift());
           } else if (array2.length && !array1.length) {
             newArray.push(array2.shift());
-          } else if (array1[0][1] >= array2[0][1]) {
-            newArray.push(array1.shift());
-          } else if (array2[0][1] >= array1[0][1]) {
-            newArray.push(array2.shift());
           }
+          // Check to see which city has a larger elevation, then push that array
+          else if (array1[0][1] >= array2[0][1]) {
+              newArray.push(array1.shift());
+            } else if (array2[0][1] >= array1[0][1]) {
+              newArray.push(array2.shift());
+            }
         }
+        // return the sorted array, so that it can be merged with other arrays
         return newArray;
       }
+
+      // return the sorted array of cities to map over in the component
       return elevations;
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
@@ -22847,21 +22971,45 @@ var ElevationList = function (_Component) {
   _createClass(ElevationList, [{
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
-        { className: 'col-sm-12' },
+        { className: 'col-sm-12', __source: {
+            fileName: _jsxFileName,
+            lineNumber: 51
+          },
+          __self: this
+        },
         this.elevationSort().map(function (e, i) {
           return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
-            { key: i, className: 'list' },
+            { key: i, className: 'list', __source: {
+                fileName: _jsxFileName,
+                lineNumber: 55
+              },
+              __self: _this2
+            },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'p',
-              null,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 56
+                },
+                __self: _this2
+              },
               e[0]
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'p',
-              null,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 56
+                },
+                __self: _this2
+              },
               e[1]
             )
           );
