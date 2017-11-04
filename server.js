@@ -17,7 +17,7 @@ app.use(function(req, res, next) {
 app.use(bodyParser.json());
 
 
-app.post('/geoCode', async (req, res, next) => {
+app.post('/geoCode', (req, res, next) => {
   // const elevations = [];
   const key = process.env.KEY;
   const locations = req.body.locations;
@@ -83,18 +83,8 @@ app.post('/geoCode', async (req, res, next) => {
     search().then(() => {
       console.log('finally');
     })
-    // search(locations, key).then(e => {
-    //   console.log(e);
-    // });
-
-
     console.log(elevations);
     // res.send(JSON.stringify(elevations));
-    // next(elevations)
-
-// }).use((elevations) => {
-//   console.log(elevations);
-// });
 });
 
 app.use(express.static(__dirname + '/public'));
