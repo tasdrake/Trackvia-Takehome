@@ -22658,7 +22658,7 @@ var Search = function (_Component) {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(_this.state.locations)
+        body: JSON.stringify({ locations: _this.state.locations })
       }).then(function (res) {
         console.log(1, res);
         res.json();
@@ -22810,12 +22810,17 @@ var ElevationList = function (_Component) {
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ElevationList.__proto__ || Object.getPrototypeOf(ElevationList)).call.apply(_ref, [this].concat(args))), _this), _this.elevationSort = function () {
       var elevations = mergeSort(_this.props.elevations);
 
+      // I use a merge sort to reduce the BigO to nlogn
       function mergeSort(array) {
         if (array.length > 1) {
+          // split the array in half, continue until each array contains one item
           var array1 = array.slice(0, Math.ceil(array.length / 2));
           var array2 = array.slice(Math.ceil(array.length / 2), array.length);
+
+          // return the helper function that combines two given arrays
           return merge(mergeSort(array1), mergeSort(array2));
         } else {
+          // exit condition for recursive function when the length of each array is 1
           return array;
         }
       }
