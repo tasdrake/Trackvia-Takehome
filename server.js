@@ -15,10 +15,10 @@ app.use(bodyParser.json())
 app.post('/geoCode', (req, res) => {
   const elevations = [];
   const key = process.env.KEY
-  const locations = req.body.locations;
+  // const locations = req.body.locations;
 
   console.log(req.body);
-  console.log(req);
+  // console.log(req);
   locations.map(city => {
     const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${key}`;
 
