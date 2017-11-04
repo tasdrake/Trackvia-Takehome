@@ -22607,8 +22607,6 @@ module.exports = function (css) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ElevationList__ = __webpack_require__(192);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__index_css__ = __webpack_require__(193);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__index_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__index_css__);
-var _jsxFileName = '/Users/tasman/Documents/Galvanize/Career Services/interviews/Trackvia/Trackvia-Takehome/src/components/Search.js';
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22643,29 +22641,32 @@ var Search = function (_Component) {
 
     _this.search = function (e) {
       e.preventDefault();
-      if (_this.state.elevations.length) {
-        _this.setState({ elevations: [] });
-      }
-      _this.state.locations.map(function (city) {
+      // if (this.state.elevations.length) {
+      //   this.setState({ elevations: [] });
+      // }
+      var elevations = _this.state.locations.map(function (city) {
         var url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + city + '&key=' + key;
 
-        fetch(url).then(function (res) {
+        return fetch(url).then(function (res) {
           return res.json();
         }).then(function (geoCode) {
           var lat = geoCode.results[0].geometry.location.lat;
           var lng = geoCode.results[0].geometry.location.lng;
           var url2 = 'https://maps.googleapis.com/maps/api/elevation/json?locations=' + lat + ',' + lng + '&key=' + key;
 
-          fetch(url2).then(function (response) {
+          return fetch(url2).then(function (response) {
             return response.json();
           }).then(function (elev) {
-            var elevations = _this.state.elevations;
+            // const elevations = this.state.elevations;
             var elevation = elev.results[0].elevation;
-            elevations.push([city, elevation]);
-            _this.setState({ elevations: elevations });
+            return [city, elevation];
+            // elevations.push([city, elevation]);
+            // this.setState({ elevations });
           });
         });
       });
+
+      _this.setState({ elevations: elevations });
     };
 
     _this.state = {
@@ -22679,119 +22680,50 @@ var Search = function (_Component) {
   _createClass(Search, [{
     key: 'render',
     value: function render() {
-      var _this2 = this;
-
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
-        {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 59
-          },
-          __self: this
-        },
+        null,
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'form',
-          { className: 'form-horizontal well', __source: {
-              fileName: _jsxFileName,
-              lineNumber: 60
-            },
-            __self: this
-          },
+          { className: 'form-horizontal well' },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
-            { className: 'form-group', __source: {
-                fileName: _jsxFileName,
-                lineNumber: 61
-              },
-              __self: this
-            },
+            { className: 'form-group' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'div',
-              { className: 'col-sm-12', __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 62
-                },
-                __self: this
-              },
+              { className: 'col-sm-12' },
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'h4',
-                {
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 63
-                  },
-                  __self: this
-                },
+                null,
                 'Add Locations to Elevation Search'
               )
             )
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
-            { className: 'form-group', __source: {
-                fileName: _jsxFileName,
-                lineNumber: 66
-              },
-              __self: this
-            },
+            { className: 'form-group' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'label',
-              { className: 'col-sm-12 control-label', __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 67
-                },
-                __self: this
-              },
+              { className: 'col-sm-12 control-label' },
               'New Location'
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'div',
-              { className: 'col-sm-12', __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 68
-                },
-                __self: this
-              },
+              { className: 'col-sm-12' },
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
-                { className: 'row', __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 69
-                  },
-                  __self: this
-                },
+                { className: 'row' },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                   'div',
-                  { className: 'col-sm-9', __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 70
-                    },
-                    __self: this
-                  },
-                  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', className: 'form-control', onChange: this.addNewLocation, value: this.state.newLocation, __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 71
-                    },
-                    __self: this
-                  })
+                  { className: 'col-sm-9' },
+                  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', className: 'form-control', onChange: this.addNewLocation, value: this.state.newLocation })
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                   'div',
-                  { className: 'col-sm-3', __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 73
-                    },
-                    __self: this
-                  },
+                  { className: 'col-sm-3' },
                   __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'button',
-                    { className: 'btn btn-primary', onClick: this.addLocation, __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 74
-                      },
-                      __self: this
-                    },
+                    { className: 'btn btn-primary', onClick: this.addLocation },
                     'Add Location'
                   )
                 )
@@ -22800,48 +22732,22 @@ var Search = function (_Component) {
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
-            { className: 'form-group', __source: {
-                fileName: _jsxFileName,
-                lineNumber: 79
-              },
-              __self: this
-            },
+            { className: 'form-group' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'label',
-              { className: 'col-sm-12 control-label', __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 80
-                },
-                __self: this
-              },
+              { className: 'col-sm-12 control-label' },
               'Added Locations'
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'div',
-              { className: 'col-sm-12', __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 81
-                },
-                __self: this
-              },
+              { className: 'col-sm-12' },
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'ul',
-                {
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 82
-                  },
-                  __self: this
-                },
+                null,
                 this.state.locations.map(function (e, i) {
                   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'li',
-                    { key: i, __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 84
-                      },
-                      __self: _this2
-                    },
+                    { key: i },
                     e
                   );
                 })
@@ -22850,35 +22756,15 @@ var Search = function (_Component) {
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
-            { className: 'form-group', __source: {
-                fileName: _jsxFileName,
-                lineNumber: 89
-              },
-              __self: this
-            },
+            { className: 'form-group' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'div',
-              { className: 'col-sm-8', __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 90
-                },
-                __self: this
-              },
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'submit', value: 'Search Elevations', className: 'btn btn-primary', onClick: this.search, __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 91
-                },
-                __self: this
-              })
+              { className: 'col-sm-8' },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'submit', value: 'Search Elevations', className: 'btn btn-primary', onClick: this.search })
             )
           )
         ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__ElevationList__["a" /* default */], { elevations: this.state.elevations, __source: {
-            fileName: _jsxFileName,
-            lineNumber: 95
-          },
-          __self: this
-        })
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__ElevationList__["a" /* default */], { elevations: this.state.elevations })
       );
     }
   }]);
