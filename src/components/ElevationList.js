@@ -42,6 +42,7 @@ class ElevationList extends Component {
       return newArray;
     }
 
+    // return the sorted array of cities to map over in the component
     return elevations;
   }
 

@@ -2,7 +2,9 @@
 
 const express = require('express');
 const app = express();
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+const fetch = require('node-fetch');
+
 require('dotenv').config();
 
 app.use(function(req, res, next) {
@@ -11,12 +13,13 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use(bodyParser.json())
+app.use(bodyParser.json());
+
 app.post('/geoCode', (req, res) => {
   const elevations = [];
-  const key = process.env.KEY
+  const key = process.env.KEY;
   const locations = req.body.locations;
-  
+
   locations.map(city => {
     const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${key}`;
 
