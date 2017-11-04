@@ -31,6 +31,7 @@ app.post('/geoCode', (req, res) => {
         elevations.push([city, elevation]);
       });
     });
+  });
   console.log(elevations);
   res.send(elevations);
 });

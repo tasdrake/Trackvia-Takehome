@@ -68,7 +68,11 @@ class Search extends Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(this.state.locations)
-    })
+    }).then(res => {
+      console.log(1, res);
+      res.json();
+      console.log(2, res);
+    }).then(r => console.log(3, r))
   }
 
 

@@ -22598,7 +22598,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-var key = 'AIzaSyCR170bZ7FgpB7JdxPwS2hzAUSmyfEhS64';
 
 var Search = function (_Component) {
   _inherits(Search, _Component);
@@ -22660,6 +22659,12 @@ var Search = function (_Component) {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(_this.state.locations)
+      }).then(function (res) {
+        console.log(1, res);
+        res.json();
+        console.log(2, res);
+      }).then(function (r) {
+        return console.log(3, r);
       });
     };
 
