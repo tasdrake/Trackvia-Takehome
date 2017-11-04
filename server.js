@@ -47,6 +47,7 @@ app.post('/geoCode', (req, res, next) => {
   }
 
   search().then((elevations) => {
+    console.log(elevations.map(e => e.promise));
     res.send(JSON.stringify(elevations));
   });
 });
