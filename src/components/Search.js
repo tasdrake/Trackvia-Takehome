@@ -48,8 +48,7 @@ class Search extends Component {
     .then(res => res.json())
     // set the state to contain the elevations
     .then(elevations => console.log(3, elevations))
-
-      // this.setState({ elevations })
+    // .then(elevations => this.setState({ elevations }));
   }
 
 
