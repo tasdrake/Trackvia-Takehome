@@ -6,7 +6,6 @@
   "author": "Tasman Terzakes Drake <tasman.drake@colorado.edu>",
   "license": "MIT",
   "dependencies": {
-    "bootstrap": "^3.3.7",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-scripts": "^1.0.17"
