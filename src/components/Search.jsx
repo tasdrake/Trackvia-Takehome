@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ElevationList from './ElevationList.jsx';
 import '../index.css';
 const key = 'AIzaSyCR170bZ7FgpB7JdxPwS2hzAUSmyfEhS64';
 
@@ -28,7 +29,9 @@ class Search extends Component {
 
   search = (e) => {
     e.preventDefault();
-
+    if (this.state.elevations.length) {
+      this.setState({ elevations: [] });
+    }
     this.state.locations.map(city => {
       const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${key}`;
 
@@ -56,26 +59,26 @@ class Search extends Component {
       <div>
         <form className="form-horizontal well">
           <div className="form-group">
-            <div className="col-sm-8 col-sm-offset-2">
+            <div className="col-sm-12">
               <h4>Add Locations to Elevation Search</h4>
             </div>
           </div>
           <div className="form-group">
-            <label className="col-sm-2 control-label">New Location</label>
+            <label className="col-sm-12 control-label">New Location</label>
             <div className="col-sm-12">
               <div className="row">
-                <div className="col-sm-4">
+                <div className="col-sm-9">
                   <input type="text" className="form-control" onChange={this.addNewLocation} value={this.state.newLocation}/>
                 </div>
-                <div className="col-sm-2">
+                <div className="col-sm-3">
                   <button className="btn btn-primary" onClick={this.addLocation}>Add Location</button>
                 </div>
               </div>
             </div>
           </div>
           <div className="form-group">
-            <label className="col-sm-2 control-label">Added Locations</label>
-            <div className="col-sm-4">
+            <label className="col-sm-12 control-label">Added Locations</label>
+            <div className="col-sm-12">
               <ul>
                 {
                   this.state.locations.map((e, i) => <li key={i}>{e}</li>)
