@@ -50,8 +50,6 @@ class Search extends Component {
     .then(elevations => this.setState({ elevations }));
   }
 
-
-
   render() {
     return (
       <div>
@@ -85,7 +83,11 @@ class Search extends Component {
             <div className="col-sm-12">
               <ul>
                 {
-                  this.state.locations.map((e, i) => <li key={i}>{e}</li>)
+                  this.state.locations.map((e, i) => {
+                    return (
+                      <li key={i}>{e}</li>
+                    );
+                  })
                 }
               </ul>
             </div>
