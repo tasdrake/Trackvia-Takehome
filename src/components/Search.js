@@ -90,6 +90,7 @@ class Search extends Component {
             </div>
           </div>
         </form>
+        {/* pass in elevations to the component that will sort them */}
         <ElevationList elevations={this.state.elevations} />
       </div>
     );
