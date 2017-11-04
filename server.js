@@ -7,6 +7,7 @@ require('dotenv').config();
 
 app.use(bodyParser.json())
 app.use(express.static(__dirname + '/public'));
+
 app.use('/elevation', (req, res, next) => {
   const lat = req.body.lat;
   const lng = req.body.lng;
