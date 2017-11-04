@@ -8,11 +8,12 @@ class ElevationList extends Component {
     // I use a merge sort to reduce the BigO to nlogn
     function mergeSort(array) {
       if (array.length > 1) {
+        //split the array in half, continue until 
         const array1 = array.slice(0, Math.ceil(array.length / 2));
         const array2 = array.slice(Math.ceil(array.length / 2), array.length);
         return merge(mergeSort(array1), mergeSort(array2));
       } else {
-        // exit condition for recursive function
+        // exit condition for recursive function when the length of each array is 1
         return array;
       }
     }
