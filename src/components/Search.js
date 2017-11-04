@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ElevationList from './ElevationList.jsx';
+import ElevationList from './ElevationList';
 import '../index.css';
 const key = 'AIzaSyCR170bZ7FgpB7JdxPwS2hzAUSmyfEhS64';
 

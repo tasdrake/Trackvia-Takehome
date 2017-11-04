@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import '../App.css'
+import '../App.css';
+
 class ElevationList extends Component {
   elevationSort = () => {
     const elevations = mergeSort(this.props.elevations);
