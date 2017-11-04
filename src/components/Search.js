@@ -36,11 +36,15 @@ class Search extends Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ locations: this.state.locations })
-    }).then(res => {
+    })
+    // take the stream from fetch and parse it
+    .then(res => {
       console.log(1, res);
       res.json();
       console.log(2, res);
-    }).then(r => console.log(3, r))
+    })
+    // set the state to contain the elevations
+    .then(r => console.log(3, r))
   }
 
 

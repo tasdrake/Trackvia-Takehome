@@ -34,7 +34,7 @@ app.post('/geoCode', (req, res) => {
     });
   });
   console.log(elevations);
-  res.send(json.stringify(elevations));
+  res.send(JSON.stringify(elevations));
 });
 app.use(express.static(__dirname + '/public'));
 
