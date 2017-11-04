@@ -15,8 +15,9 @@ app.use(bodyParser.json())
 app.post('/geoCode', (req, res) => {
   const elevations = [];
   const key = process.env.KEY
-
-  this.state.locations.map(city => {
+  const locations = req.body.locations;
+  console.log(locations);
+  locations.map(city => {
     const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${key}`;
 
     fetch(url).then(res => res.json()).then(geoCode => {
