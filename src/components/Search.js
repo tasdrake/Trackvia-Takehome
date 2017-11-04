@@ -29,27 +29,28 @@ class Search extends Component {
 
   search = (e) => {
     e.preventDefault();
-    if (this.state.elevations.length) {
-      this.setState({ elevations: [] });
-    }
-    this.state.locations.map(city => {
+    // if (this.state.elevations.length) {
+    //   this.setState({ elevations: [] });
+    // }
+    const elevations = this.state.locations.map(city => {
       const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${key}`;
 
-      fetch(url).then(res => res.json()).then(geoCode => {
+      return fetch(url).then(res => res.json()).then(geoCode => {
         const lat = geoCode.results[0].geometry.location.lat;
         const lng = geoCode.results[0].geometry.location.lng;
         const url2 = `https://maps.googleapis.com/maps/api/elevation/json?locations=${lat},${lng}&key=${key}`;
 
-        fetch(url2).then(response => response.json()).then(elev => {
-          const elevations = this.state.elevations;
+        return fetch(url2).then(response => response.json()).then(elev => {
+          // const elevations = this.state.elevations;
           const elevation = elev.results[0].elevation;
-          elevations.push([city, elevation]);
-          this.setState({ elevations });
+          return [city, elevation];
+          // elevations.push([city, elevation]);
+          // this.setState({ elevations });
         });
       });
-
-
     });
+
+    this.setState({ elevations });
   }
 
 
