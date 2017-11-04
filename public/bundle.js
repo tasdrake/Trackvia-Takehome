@@ -10097,18 +10097,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(102);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__App__ = __webpack_require__(188);
-var _jsxFileName = '/Users/tasman/Documents/Galvanize/Career Services/interviews/Trackvia/Trackvia-Takehome/src/index.js';
 
 
 
 
-__WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__App__["a" /* default */], {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 5
-  },
-  __self: this
-}), document.getElementById('root'));
+__WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__App__["a" /* default */], null), document.getElementById('root'));
 
 /***/ }),
 /* 87 */
@@ -22440,8 +22433,6 @@ module.exports = ReactDOMInvalidARIAHook;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App_css__ = __webpack_require__(82);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__App_css__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Search__ = __webpack_require__(191);
-var _jsxFileName = '/Users/tasman/Documents/Galvanize/Career Services/interviews/Trackvia/Trackvia-Takehome/src/App.js';
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22468,19 +22459,8 @@ var App = function (_Component) {
     value: function render() {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
-        { className: 'search', __source: {
-            fileName: _jsxFileName,
-            lineNumber: 8
-          },
-          __self: this
-        },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_Search__["a" /* default */], {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 9
-          },
-          __self: this
-        })
+        { className: 'search' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_Search__["a" /* default */], null)
       );
     }
   }]);
@@ -22783,8 +22763,6 @@ var Search = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App_css__ = __webpack_require__(82);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__App_css__);
-var _jsxFileName = '/Users/tasman/Documents/Galvanize/Career Services/interviews/Trackvia/Trackvia-Takehome/src/components/ElevationList.js';
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22845,45 +22823,21 @@ var ElevationList = function (_Component) {
   _createClass(ElevationList, [{
     key: 'render',
     value: function render() {
-      var _this2 = this;
-
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
-        { className: 'col-sm-12', __source: {
-            fileName: _jsxFileName,
-            lineNumber: 38
-          },
-          __self: this
-        },
+        { className: 'col-sm-12' },
         this.elevationSort().map(function (e, i) {
           return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
-            { key: i, className: 'list', __source: {
-                fileName: _jsxFileName,
-                lineNumber: 42
-              },
-              __self: _this2
-            },
+            { key: i, className: 'list' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'p',
-              {
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 43
-                },
-                __self: _this2
-              },
+              null,
               e[0]
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'p',
-              {
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 43
-                },
-                __self: _this2
-              },
+              null,
               e[1]
             )
           );
