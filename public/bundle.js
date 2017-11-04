@@ -22653,7 +22653,8 @@ var Search = function (_Component) {
 
       // });
 
-      fetch('https://localhost:3000/geoCode', {
+      // fetch('https://localhost:3000/geoCode', {
+      fetch('https://tasman-trackvia-takehome.herokuapp.com/geoCode', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
